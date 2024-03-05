@@ -22,25 +22,25 @@ public class Point {
   private static final double MEAN_EARTH_RADIUS = 6.371009e+6;
 
 
-  // TODO: Create a stub for the constructor
+// TODO: Create a stub for the constructor
 
 private ZonedDateTime timestamp;
 private double longitude;
 private double latitude;
 private double elevation;
 
-public Point(ZonedDateTime time, double longitude, double latitude, double elevation) {
-  if (longitude < MIN_LONGITUDE && longitude > MAX_LONGITUDE) {
+public Point(ZonedDateTime time, double Longitude, double Latitude, double Elevation) {
+  if (longitude < MIN_LONGITUDE || longitude > MAX_LONGITUDE) {
     throw new GPSException("Longitude out of bounds");
   }
-  if (latitude < MIN_LATITUDE && latitude > MAX_LATITUDE) {
+  if (latitude < MIN_LATITUDE || latitude > MAX_LATITUDE) {
     throw new GPSException("Latitude out of bounds");
   }
 
   this.timestamp = time;
-  this.longitude = longitude;
-  this.latitude = latitude;
-  this.elevation = elevation;
+  this.longitude = Longitude;
+  this.latitude = Latitude;
+  this.elevation = Elevation;
 }
 
   // TODO: Create a stub for getTime()
@@ -65,7 +65,7 @@ public Point(ZonedDateTime time, double longitude, double latitude, double eleva
 
   // TODO: Create a stub for toString()
   public String toString() {
-    return String.format("(%.5f %.5f), %.1f m", longitude, latitude, elevation);
+    return String.format("(%.5f, %.5f), %.1f m", longitude, latitude, elevation);
   }
 
   // IMPORTANT: Do not alter anything beneath this comment!

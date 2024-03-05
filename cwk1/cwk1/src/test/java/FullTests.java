@@ -59,6 +59,8 @@ public class FullTests {
   @DisplayName("Highest point of a Track found correctly")
   public void highestPoint() {
     assertThat(track2.highestPoint(), is(p2));
+    System.out.println(track2.highestPoint().toString());
+    System.out.println(p2.toString());
   }
 
   @Test
