@@ -3,7 +3,6 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.time.format.DateTimeParseException;
-import java.util.List;
 import java.time.ZonedDateTime;
 
 /**
@@ -13,16 +12,21 @@ import java.time.ZonedDateTime;
  */
 
 public class Track {
-  private List<Point> points;
+  private ArrayList<Point> points;
 
   // TODO: Create a stub for the constructor
   public Track() {
-    this.points = new ArrayList<>();
+    this.points = new ArrayList<Point>();
+  }
+
+  public Track(String filename) throws FileNotFoundException, GPSException {
+    this.points = new ArrayList<Point>();
+    readFile(filename);
   }
 
   // TODO: Create a stub for readFile()
   public void readFile(String filePath) throws FileNotFoundException, GPSException {
-    this.points.clear();
+    points.clear();
     Scanner myScanner = new Scanner(new File(filePath));
     String first = myScanner.nextLine();
     while (myScanner.hasNextLine()) {
