@@ -8,8 +8,8 @@ import java.time.ZonedDateTime;
 
 /**
  * Represents a point in space and time, recorded by a GPS sensor.
- *
- * @author Saif Elzegheiby
+ * 
+ * @author: Saif Elzegheiby
  */
 
 public class Track {
@@ -48,7 +48,6 @@ public class Track {
   // TODO: Create a stub for add()
   public void add(Point point) {
     this.points.add(point);
-
   }
 
   // TODO: Create a stub for get()
@@ -126,5 +125,4 @@ public class Track {
     }
     return totalDistance / totalTimeInSeconds;
   }
-
 }

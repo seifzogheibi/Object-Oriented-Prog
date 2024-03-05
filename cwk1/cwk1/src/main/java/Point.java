@@ -6,7 +6,6 @@ import static java.lang.Math.sqrt;
 import static java.lang.Math.toRadians;
 import java.time.ZonedDateTime;
 
-
 /**
  * Represents a point in space and time, recorded by a GPS sensor.
  *
@@ -21,27 +20,26 @@ public class Point {
   private static final double MAX_LATITUDE = 90.0;
   private static final double MEAN_EARTH_RADIUS = 6.371009e+6;
 
+  // TODO: Create a stub for the constructor
 
-// TODO: Create a stub for the constructor
+  private ZonedDateTime timestamp;
+  private double longitude;
+  private double latitude;
+  private double elevation;
 
-private ZonedDateTime timestamp;
-private double longitude;
-private double latitude;
-private double elevation;
+  public Point(ZonedDateTime time, double Longitude, double Latitude, double Elevation) {
+    if (Longitude < MIN_LONGITUDE || Longitude > MAX_LONGITUDE) {
+      throw new GPSException("Longitude out of bounds");
+    }
+    if (Latitude < MIN_LATITUDE || Latitude > MAX_LATITUDE) {
+      throw new GPSException("Latitude out of bounds");
+    }
 
-public Point(ZonedDateTime time, double Longitude, double Latitude, double Elevation) {
-  if (longitude < MIN_LONGITUDE || longitude > MAX_LONGITUDE) {
-    throw new GPSException("Longitude out of bounds");
+    this.timestamp = time;
+    this.longitude = Longitude;
+    this.latitude = Latitude;
+    this.elevation = Elevation;
   }
-  if (latitude < MIN_LATITUDE || latitude > MAX_LATITUDE) {
-    throw new GPSException("Latitude out of bounds");
-  }
-
-  this.timestamp = time;
-  this.longitude = Longitude;
-  this.latitude = Latitude;
-  this.elevation = Elevation;
-}
 
   // TODO: Create a stub for getTime()
   public ZonedDateTime getTime() {
@@ -86,11 +84,11 @@ public Point(ZonedDateTime time, double Longitude, double Latitude, double Eleva
     double lambda2 = toRadians(q.getLongitude());
     double delta = abs(lambda1 - lambda2);
 
-    double firstTerm = cos(phi2)*sin(delta);
-    double secondTerm = cos(phi1)*sin(phi2) - sin(phi1)*cos(phi2)*cos(delta);
-    double top = sqrt(firstTerm*firstTerm + secondTerm*secondTerm);
+    double firstTerm = cos(phi2) * sin(delta);
+    double secondTerm = cos(phi1) * sin(phi2) - sin(phi1) * cos(phi2) * cos(delta);
+    double top = sqrt(firstTerm * firstTerm + secondTerm * secondTerm);
 
-    double bottom = sin(phi1)*sin(phi2) + cos(phi1)*cos(phi2)*cos(delta);
+    double bottom = sin(phi1) * sin(phi2) + cos(phi1) * cos(phi2) * cos(delta);
 
     return MEAN_EARTH_RADIUS * atan2(top, bottom);
   }
